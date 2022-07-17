@@ -1,5 +1,4 @@
-import com.yang.dao.UserDaoImpl;
-import com.yang.service.UserServiceImpl;
+
 
 /**
  * @ClassName MyTest
@@ -13,9 +12,10 @@ import com.yang.service.UserServiceImpl;
 public class MyTest {
 
     public static void main(String[] args) {
+        System.out.println("dd");
 
-       // UserServiceImpl userService = new UserServiceImpl(new UserDaoMySQLImpl());
-        UserServiceImpl userService = new UserServiceImpl(new UserDaoImpl());
+        com.yang.service.UserServiceImpl userService = new com.yang.service.UserServiceImpl((com.yang.dao.UserDao) new com.yang.dao.UserDaoMySQLImpl());
+      //  com.yang.service.UserServiceImpl userService = new com.yang.service.UserServiceImpl(new com.yang.dao.UserDaoImpl());
         userService.getUser();
     }
 }
