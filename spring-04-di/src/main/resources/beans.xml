@@ -4,8 +4,40 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        https://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <bean id = "address" class="com.yang.pojo.Addresss"> </bean>
+
     <bean id = "student" class="com.yang.pojo.Student">
+<!--        第一种注入，普通指注入，values-->
         <property name="name" value="Yuanlin " />
+<!--        第二种注入，bean注入，ref-->
+        <property name="addresss" ref ="address"></property>
+<!--        第3种注入，数组-->
+        <property name="books">
+            <array>
+                <value>听歌</value>
+                <value>羽毛球</value>
+                <value>看电影</value>
+            </array>
+        </property>
+
+<!--        4 Map-->
+        <property name="card">
+            <map>
+               <entry key="身份证" value="1111111111111"></entry>
+                <entry key="银行卡" value="1111111111111"></entry>
+            </map>
+        </property>
+
+
+<!--       5  set-->
+        <property name="games">
+            <set>
+                <value>LOL</value>
+                <value>COC</value>
+            </set>
+        </property>
     </bean>
+
+
 
 </beans>
