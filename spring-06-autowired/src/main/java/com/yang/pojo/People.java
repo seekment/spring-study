@@ -1,5 +1,7 @@
 package com.yang.pojo;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 /**
  * @ClassName People
  * @Author yang
@@ -10,7 +12,9 @@ package com.yang.pojo;
 
 
 public class People {
+    @Autowired
     Cat cat;
+    @Autowired
     Dog dog;
     String name;
 

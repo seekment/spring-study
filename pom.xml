@@ -13,6 +13,8 @@
         <module>spring-02-hellpspring</module>
         <module>spring-04-di</module>
         <module>spring-06-autowired</module>
+        <module>spring-07-annotation</module>
+        <module>spring-07-appconfig</module>
     </modules>
 
     <properties>
