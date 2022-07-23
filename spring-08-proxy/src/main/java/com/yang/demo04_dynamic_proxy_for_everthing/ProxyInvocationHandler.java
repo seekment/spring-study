@@ -14,7 +14,7 @@ import java.lang.reflect.Proxy;
 
 // 使用这个万能的动态代理类，代理任何其他对象
 public class ProxyInvocationHandler implements InvocationHandler {
-    // 1 被代理的接口
+    // 1 被代理的接口，必须是接口才行
     private Object target;
 
     public void setTarget(Object target) {
