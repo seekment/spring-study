@@ -24,11 +24,11 @@
               -->
             <dataSource type="POOLED">
                 <!--                JDBC 驱动-->
-                <property name="driver" value="${driver}"/>
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
                 <!--                url数据库的 JDBC URL地址。-->
-                <property name="url" value="${url}"/>
-                <property name="username" value="${username}"/>
-                <property name="password" value="${password}"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/mybatis?useSSL=true&amp;useUnicode=true&amp;characterEncoding=utf-8"/>
+                <property name="username" value="root"/>
+                <property name="password" value="mysql"/>
             </dataSource>
         </environment>
     </environments>
@@ -42,8 +42,7 @@
         -->
 
         <!-- 使用映射器接口实现类的完全限定类名
-         使用注意点：
-            接口和其配置文件必须同名， 必须在同一个包下
+         使用注意点： 接口和其配置文件必须同名， 必须在同一个包下
          -->
         <mapper class="com.yang.mapper.UserMapper"/>
         <!-- 将包内的映射器接口实现全部注册为映射器

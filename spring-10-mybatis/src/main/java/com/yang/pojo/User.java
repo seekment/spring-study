@@ -17,6 +17,8 @@ import lombok.Setter;
 @Setter
 public class User {
     private int id;
-    private String name;
-    private String pwd;
+    private String gender;
+    private String birth;
+    private String department;
+    private String address;
 }
