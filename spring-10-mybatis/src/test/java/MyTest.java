@@ -5,6 +5,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -23,6 +25,7 @@ public class MyTest {
     public static void main(String[] args) {
 
     }
+    // 整合前，老方式使用mybatis
  @Test
  public void test() throws IOException {
 String resource = "mybatis-config.xml";
@@ -37,4 +40,18 @@ String resource = "mybatis-config.xml";
      }
 
  }
+
+
+// 整合后
+    @Test
+    public void test2() throws IOException {
+        ApplicationContext classPathXmlApplicationContext = new ClassPathXmlApplicationContext("spring-dao.xml");
+        UserMapper userMapper = classPathXmlApplicationContext.getBean("UserMapper", UserMapper.class);
+
+        List<User> users = userMapper.selectUser();
+        for (int i = 0; i < users.size(); i++) {
+            System.out.println(users.get(i));
+        }
+
+    }
 }

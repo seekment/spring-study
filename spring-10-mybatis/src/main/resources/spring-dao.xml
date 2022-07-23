@@ -23,9 +23,19 @@
     <bean id = "sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource"  ref="dataSource" />
 <!--        绑定Mybatis配置文件-->
-        <property name="configuration" value="classpath:mybatis-config.xml"/>
-        <property name="mapperLocations" value="classpath:com/yang.mapper/*.xml"/>
+<!--        <property name="configLocation" value="classpath:mybatis-config.xml"/>-->
+        <property name="mapperLocations" value="classpath:com/yang/mapper/*.xml"/>
     </bean>
-    
 
+    <!--第3部，配置sqlSessionTemplate:就是sqlsession-->
+    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+<!--        只能使用有参构造方式进行注入，因为没有set方法-->
+        <constructor-arg index ="0" ref="sqlSessionFactory"/>
+    </bean>
+
+<!--    下面是一个实列-->
+
+<bean id="userMapper" class="com.yang.mapper.UserMapperImpl">
+    <property name="sqlSession" ref="sqlSession"/>
+</bean>
 </beans>
