@@ -1,0 +1,9 @@
+com\yang\demo01_static_proxy\Host.class
+com\yang\demo04_dynamic_proxy_for_everthing\ProxyInvocationHandler.class
+com\yang\demo01_static_proxy\Proxy.class
+com\yang\demo01_static_proxy\Rent.class
+com\yang\demo02_static_proxy\UserServiceProxy.class
+com\yang\demo02_static_proxy\UserService.class
+com\yang\demo02_static_proxy\UserServiceImpl.class
+com\yang\demo01_static_proxy\Clinet.class
+com\yang\demo04_dynamic_proxy_for_everthing\Clint.class
