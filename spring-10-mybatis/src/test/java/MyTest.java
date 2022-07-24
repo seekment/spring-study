@@ -45,7 +45,9 @@ String resource = "mybatis-config.xml";
 // 整合后
     @Test
     public void test2() throws IOException {
-        ApplicationContext classPathXmlApplicationContext = new ClassPathXmlApplicationContext("spring-dao.xml");
+//        ApplicationContext classPathXmlApplicationContext = new ClassPathXmlApplicationContext("spring-dao.xml");
+        // 把spring-dao.xml文件,和数据库打交道文件引入到IOC容器里面管理
+        ApplicationContext classPathXmlApplicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
         UserMapper userMapper = classPathXmlApplicationContext.getBean("userMapper", UserMapper.class);
 
         List<User> users = userMapper.selectUser();

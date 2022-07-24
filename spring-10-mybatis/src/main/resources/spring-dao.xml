@@ -34,9 +34,9 @@
     </bean>
 
 <!--    下面是一个实列-->
-
-<bean id="userMapper" class="com.yang.mapper.UserMapperImpl">
-    <property name="sqlSession" ref="sqlSession"/>
-</bean>
+<!--一般写在applicationContext里面-->
+<!--<bean id="userMapper" class="com.yang.mapper.UserMapperImpl">-->
+<!--    <property name="sqlSession" ref="sqlSession"/>-->
+<!--</bean>-->
 
 </beans>
