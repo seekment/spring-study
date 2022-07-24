@@ -23,7 +23,7 @@
     <dependency>
         <groupId>mysql</groupId>
         <artifactId>mysql-connector-java</artifactId>
-        <version>5.1.47</version>
+        <version>8.0.21</version>
     </dependency>
 
     <dependency>
@@ -38,10 +38,11 @@
         <version>5.1.4.RELEASE</version>
     </dependency>
 <!--spring操作数据库的话，还需要一个spring-jdbc-->
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
     <dependency>
-        <groupId>springframework</groupId>
+        <groupId>org.springframework</groupId>
         <artifactId>spring-jdbc</artifactId>
-        <version>1.2.5</version>
+        <version>5.3.21</version>
     </dependency>
     <dependency>
         <groupId>org.aspectj</groupId>
@@ -67,31 +68,43 @@
         <scope>test</scope>
     </dependency>
 
-    <!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
+<!--    &lt;!&ndash; https://mvnrepository.com/artifact/org.springframework/spring-context &ndash;&gt;-->
+<!--    <dependency>-->
+<!--        <groupId>org.springframework</groupId>-->
+<!--        <artifactId>spring-context</artifactId>-->
+<!--    </dependency>-->
+
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-tx -->
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-tx -->
     <dependency>
         <groupId>org.springframework</groupId>
-        <artifactId>spring-context</artifactId>
-        <version>5.1.4.RELEASE</version>
+        <artifactId>spring-tx</artifactId>
+        <version>5.2.2.RELEASE</version>
     </dependency>
 </dependencies>
 
+    <!--由于maven约定大于配置，资源如果没放在资源文件夹下，可能不生效
+  故会产生Maven静态资源过滤问题-->
     <build>
         <resources>
             <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+            <resource>
                 <directory>src/main/resources</directory>
-                <filtering>true</filtering>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>false</filtering>
             </resource>
         </resources>
-
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-resources-plugin</artifactId>
-                <configuration>
-                    <encoding>UTF-8</encoding>
-                </configuration>
-            </plugin>
-        </plugins>
     </build>
+
 
 </project>

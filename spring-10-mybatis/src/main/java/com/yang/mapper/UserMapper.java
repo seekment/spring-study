@@ -1,7 +1,5 @@
 package com.yang.mapper;
 
-import com.yang.pojo.User;
-
 import java.util.List;
 
 /**

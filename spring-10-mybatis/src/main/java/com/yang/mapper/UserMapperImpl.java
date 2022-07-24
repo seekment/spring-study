@@ -1,6 +1,5 @@
 package com.yang.mapper;
 
-import com.yang.pojo.User;
 import org.mybatis.spring.SqlSessionTemplate;
 
 import java.util.List;

@@ -1,5 +1,5 @@
 import com.yang.mapper.UserMapper;
-import com.yang.pojo.User;
+import com.yang.mapper.User;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -46,7 +46,7 @@ String resource = "mybatis-config.xml";
     @Test
     public void test2() throws IOException {
         ApplicationContext classPathXmlApplicationContext = new ClassPathXmlApplicationContext("spring-dao.xml");
-        UserMapper userMapper = classPathXmlApplicationContext.getBean("UserMapper", UserMapper.class);
+        UserMapper userMapper = classPathXmlApplicationContext.getBean("userMapper", UserMapper.class);
 
         List<User> users = userMapper.selectUser();
         for (int i = 0; i < users.size(); i++) {

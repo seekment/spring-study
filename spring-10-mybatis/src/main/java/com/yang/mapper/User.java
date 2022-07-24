@@ -1,8 +1,7 @@
-package com.yang.pojo;
+package com.yang.mapper;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import org.springframework.stereotype.Component;
 
 /**
  * @ClassName User
@@ -11,12 +10,10 @@ import lombok.Setter;
  * @Date 22/07/23 18:05
  * @Version v1.0
  **/
-
+@Component
 @Data
-@Getter
-@Setter
 public class User {
-    private int id;
+    private String id;
     private String gender;
     private String birth;
     private String department;
