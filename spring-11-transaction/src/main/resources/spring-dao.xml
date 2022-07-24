@@ -3,12 +3,15 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        https://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
        https://www.springframework.org/schema/context/spring-context.xsd
       http://www.springframework.org/schema/aop
-       https://www.springframework.org/schema/aop/spring-aop.xsd">
+       https://www.springframework.org/schema/aop/spring-aop.xsd
+http://www.springframework.org/schema/tx
+       https://www.springframework.org/schema/tx/spring-tx.xsd">
 
 <!--  第一步  DataSource:使用spring的数据源替换Mybatis的配置 c3p0. dbcp druid,
 我们这里使用Spring提供的JDBC-->
@@ -33,10 +36,29 @@
         <constructor-arg index ="0" ref="sqlSessionFactory"/>
     </bean>
 
-<!--    下面是一个实列-->
-<!--一般写在applicationContext里面-->
-<!--<bean id="userMapper" class="UserMapperImpl">-->
-<!--    <property name="sqlSession" ref="sqlSession"/>-->
-<!--</bean>-->
+<!--1 配置事务-->
+    <bean id="txmanager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="myDataSource"/>
+    </bean>
+<!--    -->
+<!-- 2   结合声明式事务的织入-->
+<!--    配置事务通知-->
+    <tx:advice id="txAdvice" transaction-manager="txmanager">
+<!--        给那些方式配置什么事事务-->
+<!--        配置事务的传播特性-->
+        <tx:attributes>
+            <tx:method name="add" propagation="REQUIRED"/>
+            <tx:method name="delete" propagation="REQUIRED"/>
+            <tx:method name="update" propagation="REQUIRED"/>
+            <tx:method name="query" read-only="true"/>
+<!--            <tx:method name="*" read-only="true"/>所以方法-->
+        </tx:attributes>
+    </tx:advice>
+
+<!--    3 配置事务织入-->
+    <aop:config>
+        <aop:pointcut id="txPointCut" expression="execution(* com.yang.mapper.*.*(..))"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointCut"/>
+    </aop:config>
 
 </beans>

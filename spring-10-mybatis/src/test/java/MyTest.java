@@ -1,5 +1,5 @@
-import com.yang.mapper.UserMapper;
-import com.yang.mapper.User;
+import com.yang.UserMapper;
+import com.yang.User;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
